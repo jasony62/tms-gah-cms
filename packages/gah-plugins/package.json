@@ -1,0 +1,16 @@
+{
+  "name": "gah-plugins",
+  "version": "1.0.0",
+  "private": "true",
+  "description": "定义tms-mongodb-web的前端插件。",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "tms-mongodb-web",
+    "plugin"
+  ],
+  "author": "jasony62",
+  "license": "MIT"
+}

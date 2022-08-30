@@ -1,0 +1,17 @@
+{
+  "name": "gah-cms",
+  "version": "1.0.0",
+  "private": "true",
+  "description": "tmw控制器扩展，提供专用api。",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "tms-mongodb-web",
+    "controller",
+    "api"
+  ],
+  "author": "jasony62",
+  "license": "MIT"
+}
