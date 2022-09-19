@@ -1,22 +1,27 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHashHistory, RouteRecordRaw } from 'vue-router'
 
-import Upload from '@/views/Upload.vue'
+import CallApis from '@/views/CallApis.vue'
+import ImportJson from '@/views/ImportJson.vue'
 
 const BASE_URL = import.meta.env.VITE_BASE_URL
   ? import.meta.env.VITE_BASE_URL
-  : '/plugin'
+  : '/plugin/gah'
 
 const routes: RouteRecordRaw[] = [
   {
-    path: '/upload',
-    name: 'Upload',
-    component: Upload,
+    path: '/call-apis',
+    name: 'CallApis',
+    component: CallApis,
   },
+  {
+    path: '/import-json',
+    name: 'ImportJson',
+    component: ImportJson,
+  }
 ]
 
-const router = createRouter({
-  history: createWebHistory(BASE_URL),
-  routes,
-})
+
+const history = createWebHashHistory(BASE_URL)
+const router = createRouter({ history, routes })
 
 export default router
