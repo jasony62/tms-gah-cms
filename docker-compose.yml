@@ -1,0 +1,64 @@
+version: '3.7'
+services:
+  mongodb:
+    build: ./mongodb
+    image: gah-mongodb:latest
+    container_name: gah-mongodb
+    volumes:
+      - ./gah-mongodb/data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root  
+      MONGO_INITDB_ROOT_PASSWORD: 5RdHqf94AF
+    ports:
+      - 27017:27017
+    networks:
+      e2e5gmx_net:
+
+  # redis:
+  #   image: rcs-redis:v0.0.1-beta1
+  #   container_name: gah-redis
+  #   ports:
+  #     - 6380:6380
+  #   command:
+  #     - /bin/bash
+  #     - -c
+  #     - redis-server --appendonly yes --requirepass "urYgbBtgqv"
+  #   networks:
+  #     e2e5gmx_net:
+
+  gahcmsback:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: gah-cms-back:latest
+    container_name: gah-cms-back
+    volumes:
+      - ./docker/gah-aio.conf:/etc/nginx/http.d/gah-aio.conf
+      - ./docker/start.sh:/usr/app/tmw/start_back.sh
+    command:
+      - /bin/bash
+      - -c
+      - rm -f /etc/nginx/http.d/default.conf
+    environment:
+      DEBUG: gahcms:*
+    ports:
+      - 3000:3000
+      - 3001:3001
+      - 3002:3002
+      - 80:80
+    networks:
+      e2e5gmx_net:
+
+  nginx:
+    build: ./nginx
+    image: gah-nginx:latest
+    container_name: gah-nginx
+    volumes:
+      - ./docker/gah-nginx.conf:/etc/nginx/conf.d/gah-nginx.conf
+    ports:
+      - 30006:8080
+    networks:
+      e2e5gmx_net:
+
+networks:
+  e2e5gmx_net:

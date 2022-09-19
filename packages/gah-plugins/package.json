@@ -1,16 +1,25 @@
 {
   "name": "gah-plugins",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "private": "true",
   "description": "定义tms-mongodb-web的前端插件。",
   "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "rimraf ./dist && tsc",
+    "dev": "DEBUG=tms-koa:* node node_modules/tms-koa/dist/server"
   },
   "keywords": [
     "tms-mongodb-web",
     "plugin"
   ],
   "author": "jasony62",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@types/node": "^18.7.13",
+    "tmw-kit": "^0.0.9"
+  },
+  "devDependencies": {
+    "rimraf": "^3.0.2",
+    "tms-koa": "^0.0.99"
+  }
 }
